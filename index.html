@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Google Ads Dashboard</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:400,700"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Google Ads Dashboard</h1>
+      <b><a href="#">Logout</a></b>
+    </header>
+    <main>
+      <section>
+        <h2>Campaign Data</h2>
+        <ul id="campaign-data">
+          <div class="spinner">
+            <div class="spinner-inner"></div>
+          </div>
+        </ul>
+      </section>
+      <section>
+        <h2>Conversion Data</h2>
+        <ul id="conversion-data">
+          <div class="spinner">
+            <div class="spinner-inner"></div>
+          </div>
+        </ul>
+      </section>
+      <section>
+        <h2>Conversion Rates</h2>
+        <ul id="conversion-rates">
+          <div class="spinner">
+            <div class="spinner-inner"></div>
+          </div>
+        </ul>
+      </section>
+      <section>
+        <h2>User Engagement</h2>
+        <ul id="engagement-data">
+          <div class="spinner">
+            <div class="spinner-inner"></div>
+          </div>
+        </ul>
+      </section>
+      <section style="margin: 0 auto">
+        <h2>Customer Information</h2>
+        <form
+          action="http://localhost:8080/api/google/v1"
+          method="POST"
+          id="my-form"
+        >
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required />
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+          <label for="phone">Phone:</label>
+          <input type="tel" id="phone" name="phone" required />
+          <button type="submit">Update Information</button>
+        </form>
+      </section>
+    </main>
+    <footer>© 2023 Google Ads Dashboard</footer>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

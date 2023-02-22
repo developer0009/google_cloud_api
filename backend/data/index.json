@@ -1,0 +1,66 @@
+{
+  "data": [
+    {
+      "campaign": {
+        "campaign_id": "1234567890",
+        "name": "Summer Sale 2022",
+        "status": "ENABLED",
+        "budget": {
+          "amount": 1000,
+          "currency": "USD"
+        },
+        "start_date": "2023-01-01",
+        "end_date": "2022-12-31",
+        "clicks": 1000,
+        "impressions": 5000,
+        "cost": {
+          "amount": 200,
+          "currency": "USD"
+        },
+        "conversions": 10,
+        "conversion_rate": 1,
+        "average_cpc": {
+          "amount": 0.2,
+          "currency": "USD"
+        }
+      },
+
+      "conversion_data": {
+        "keyword_id": "90131211132",
+        "text": "Best vegan restaurant in town",
+        "match_type": "BROAD",
+        "clicks": 500,
+        "impressions": 2000,
+        "cost": {
+          "amount": 100,
+          "currency": "USD"
+        },
+        "conversions": 5
+      },
+      "conversion_rate": {
+        "conversions": 1,
+        "conversion_rate": 0.01,
+        "average_cpc": {
+          "amount": 0.2,
+          "currency": "USD"
+        },
+        "average_position": 3.5,
+        "ctr": 0.02
+      },
+      "engagement_data": {
+        "id": "1234567890",
+        "name": "Summer Sale",
+        "status": "ENABLED",
+        "cpa": 46.27,
+        "roas": 2.89,
+        "ads": {
+          "ad_id": "1234567890",
+          "type": "TEXT",
+          "headline": "Get 50% Off on All Products - Limited Time Offer!",
+          "description": "Shop now and get half off on all our products! Hurry, this offer won't last forever. Our high-quality products are perfect for all your needs. Free shipping and returns available. Order now!",
+          "final_urls": ["http://www.example.com"]
+        }
+      }
+    }
+  ]
+}

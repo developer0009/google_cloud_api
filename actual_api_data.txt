@@ -1,0 +1,88 @@
+const ACCESS_TOKEN = "pCZqhXYeUfVJo9Kq5ULywA";
+
+// Make API requests using Axios
+axios.defaults.headers.common["Authorization"] = `Bearer ${ACCESS_TOKEN}`;
+
+// Get campaign data
+axios
+.get(
+"https://googleads.googleapis.com/v8/customers/437-173-4478/googleAds:search",
+{
+params: {
+query: `SELECT campaign.name, campaign.status, campaign.click_through_rate, campaign.cost_micros, campaign.conversions, campaign.conversion_value FROM campaign WHERE campaign.status = 'ENABLED'`,
+},
+}
+)
+.then(function (response) {
+const data = response.data;
+let output = "";
+data.forEach(function (campaign) {
+output += `
+
+<div>
+<h3>${campaign.campaign.name}</h3>
+        <ul>
+          <li>Status: ${campaign.campaign.status}</li>
+          <li>CTR:
+      ${campaign.campaign.click_through_rate}</li>
+      <li>Cost: $${(campaign.campaign.cost_micros / 1000000).toFixed(2)}</li>
+<li>Conversions: ${campaign.campaign.conversions}</li>
+      <li>Conversion Value: $${(
+campaign.campaign.conversion_value / 1000000
+).toFixed(2)}</li>
+</ul>
+
+  </div>
+`;
+    });
+    document.getElementById("campaign-data").innerHTML = output;
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+// Get conversion data
+axios
+.get(
+"https://googleads.googleapis.com/v8/customers/437-173-4478/googleAds:search",
+{
+params: {
+query: `SELECT campaign.name, conversion_action.name, conversion_action.value, conversion_action.conversion_value, conversion_action.conversion_value_currency_code, metrics.conversions, metrics.cost_micros FROM campaign WHERE campaign.status = 'ENABLED' AND conversion_action.conversion_value IS NOT NULL,`,
+},
+}
+)
+.then(function (response) {
+const data = response.data;
+console.log(data);
+let output = "";
+data.forEach(function (conversion) {
+output += `
+        <div>
+          {" "}
+          <h3>
+            ${conversion.campaign.name} - ${conversion.conversion_action.name}
+          </h3>{" "}
+          <ul>
+            {" "}
+            <li>
+              Conversion Value: ${
+                conversion.conversion_action.conversion_value
+              }{" "}
+              ${conversion.conversion_action.conversion_value_currency_code}
+            </li>{" "}
+            <li>Conversions: ${conversion.metrics.conversions}</li>{" "}
+            <li>
+              Cost: $${(conversion.metrics.cost_micros / 1000000).toFixed(2)}
+            </li>{" "}
+            <li>
+              Value per Conversion: $$
+              {(conversion.conversion_action.value / 1000000).toFixed(2)}
+            </li>{" "}
+          </ul>{" "}
+        </div>`;
+});
+document.getElementById("conversion-data").innerHTML = output;
+})
+.catch(function (error) {
+console.log(error);
+});
